@@ -1,0 +1,11 @@
+fastapi
+sqlalchemy>=2
+pydantic
+uvicorn
+icalendar>=6
+pypdf
+python-multipart
+python-dotenv
+anthropic
+openai
+google-genai

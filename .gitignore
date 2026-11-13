@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.db
+.env
+node_modules/
+dist/
+backend/eval/syllabi/*
+!backend/eval/syllabi/README.md
+!backend/eval/syllabi/example.txt
