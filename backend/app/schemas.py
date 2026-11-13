@@ -76,14 +76,25 @@ class DeadlineOut(BaseModel):
     course_id: int | None
     title: str
     kind: str
-    starts_at: datetime
+    starts_at: datetime | None
     all_day: bool
     timezone: str
     source: str
     status: str
+    confidence: str | None
     raw_text: str | None
+    review_flags: list[str]
     dedupe_key: str
     model_config = {"from_attributes": True}
+
+
+class SyllabusOut(BaseModel):
+    id: int
+    course_id: int
+    provider: str
+    items_found: int
+    created: list[DeadlineOut]
+    skipped_duplicates: list[str]
 
 
 def normalize(text: str) -> str:

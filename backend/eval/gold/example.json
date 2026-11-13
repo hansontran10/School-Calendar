@@ -1,0 +1,13 @@
+{
+  "term_start": "2027-01-11",
+  "term_end": "2027-05-07",
+  "no_class_dates": ["2027-03-08", "2027-03-09", "2027-03-10", "2027-03-11", "2027-03-12"],
+  "items": [
+    {"title": "Problem Set 1", "due_date": "2027-01-20"},
+    {"title": "Quiz 1", "due_date": "2027-01-29"},
+    {"title": "Midterm exam", "due_date": "2027-02-24"},
+    {"title": "Lab notebook check", "due_date": "2027-03-04"},
+    {"title": "Problem Set 4", "due_date": "2027-03-15"},
+    {"title": "Final exam", "due_date": null}
+  ]
+}

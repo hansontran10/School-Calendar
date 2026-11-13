@@ -6,3 +6,6 @@ __pycache__/
 .env
 node_modules/
 dist/
+backend/eval/syllabi/*
+!backend/eval/syllabi/README.md
+!backend/eval/syllabi/example.txt

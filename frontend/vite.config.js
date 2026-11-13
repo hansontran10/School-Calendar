@@ -11,6 +11,7 @@ export default defineConfig({
       "/deadlines": api,
       "/courses": api,
       "/export": api,
+      "/syllabi": api,
     },
   },
 });

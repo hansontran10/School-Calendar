@@ -1,8 +1,11 @@
 import os
 from collections.abc import Iterator
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
+
+load_dotenv()  # reads backend/.env when present; real env vars win
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./deadline_sync.db")
 
