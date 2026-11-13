@@ -14,11 +14,20 @@ pytest -q
 
 Data is stored in SQLite by default (`DATABASE_URL` to change it).
 
+## Frontend (React + Vite)
+
+```bash
+cd frontend
+npm install
+npm run dev      # http://localhost:5173, proxies API calls to :8000
+```
+
 ## Status
 
 - [x] Deadline and course CRUD with validation (timezone-aware datetimes, known timezones, required fields)
 - [x] Dedupe key (course + title + local date)
-- [ ] .ics export
+- [x] .ics export (confirmed items; stable UIDs; all-day and timed events)
+- [x] Basic React page: list, add manually, delete, download .ics
 - [ ] Syllabus upload and LLM extraction
 - [ ] Review screen
 - [ ] Google Calendar sync

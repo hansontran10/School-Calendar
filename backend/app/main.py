@@ -1,12 +1,14 @@
 from datetime import UTC, datetime
 
 from fastapi import Depends, FastAPI, HTTPException, Response
+from fastapi.responses import Response as RawResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app import models
 from app.db import Base, engine, get_db
 from app.dedupe import make_dedupe_key
+from app.ics import build_ics
 from app.schemas import (
     CourseCreate,
     CourseOut,
@@ -126,3 +128,20 @@ def delete_deadline(deadline_id: int, db: Session = Depends(get_db)) -> Response
     db.delete(deadline)
     db.commit()
     return Response(status_code=204)
+
+
+@app.get("/export/ics")
+def export_ics(
+    course_id: int | None = None,
+    db: Session = Depends(get_db),
+) -> RawResponse:
+    """Confirmed deadlines as an .ics file. Pending and rejected items are left out."""
+    query = select(models.Deadline).where(models.Deadline.status == "confirmed")
+    if course_id is not None:
+        query = query.where(models.Deadline.course_id == course_id)
+    deadlines = list(db.scalars(query.order_by(models.Deadline.starts_at)))
+    return RawResponse(
+        content=build_ics(deadlines),
+        media_type="text/calendar",
+        headers={"Content-Disposition": 'attachment; filename="deadlines.ics"'},
+    )
